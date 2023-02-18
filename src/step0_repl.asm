@@ -23,6 +23,7 @@ ORG &2000
 
     JSR eval
     JSR print
+    JSR print_str
     JMP loop
 .read
     LDA #ASC("]")
@@ -65,6 +66,13 @@ ORG &2000
     EQUB 10:EQUB 13
 .buffer
     EQUB 0
+    SKIP &FF
+
+.libraries
+    INCLUDE "src/common/string_utils.asm"
+
 .end
+
+
 
 SAVE "mal6502", start, end 
