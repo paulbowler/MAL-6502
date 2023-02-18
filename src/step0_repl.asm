@@ -2,6 +2,8 @@ osword = &FFF1
 oswrch = &FFEE
 osbyte = &FFF4
 
+str_addr = &70
+
 ORG &2000
 
 .start
@@ -9,21 +11,20 @@ ORG &2000
     STA buffer
     LDX #0      ; Initialise counter
 .prompt
-    LDA prompt_text, X
-    CMP #0
-    BEQ loop
-    JSR oswrch
-    INX
-    JMP prompt
+    JSR print_str
+    EQUS "MAL v1.1"
+    EQUB 10
+    EQUB 13
+    EQUB 10
+    EQUB 13
+    EQUB 0
 .loop
     JSR read
     BCS exit    ; Exit if escape pressed
     CPY #0      ; If no input do nothing
     BEQ loop
-
     JSR eval
     JSR print
-    JSR print_str
     JMP loop
 .read
     LDA #ASC("]")
@@ -52,11 +53,6 @@ ORG &2000
     LDA #10:JSR oswrch  ; Print new line to
     LDA #13:JSR oswrch  ; exit gracefully
     RTS
-
-.prompt_text
-    EQUS "MAL v1.0"
-    EQUB 10:EQUB 13
-    EQUB 0
 
 .libraries
     INCLUDE "src/common/string_utils.asm"
