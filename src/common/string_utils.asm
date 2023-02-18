@@ -23,8 +23,7 @@
 	STA $0104,X		; put on stack as return address low byte (+4 to correct pointer, X is unchanged)
 	LDA #$00		; clear A
 	ADC $BD		    ; add string pointer high byte
-	STA $0105,X		; put on stack as return address high byte
-				    ; (+5 to correct pointer, X is unchanged)
+	STA $0105,X		; put on stack as return address high byte (+5 to correct pointer, X is unchanged)
 	PLA			    ; pull value
 	TAX  			; restore X
 	PLA			    ; pull value
