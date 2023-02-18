@@ -28,10 +28,7 @@ ORG &2000
 .read
     LDA #ASC("]")
     JSR oswrch
-    LDA #0
-    LDX #readline MOD 256
-    LDY #readline DIV 256
-    JSR osword
+    JSR read_str
     RTS
 .eval
     LDX #0
@@ -56,17 +53,10 @@ ORG &2000
     LDA #13:JSR oswrch  ; exit gracefully
     RTS
 
-.readline
-    EQUW buffer
-    EQUB &FF
-    EQUB 32
-    EQUB 127
 .prompt_text
     EQUS "MAL v1.0"
     EQUB 10:EQUB 13
-.buffer
     EQUB 0
-    SKIP &FF
 
 .libraries
     INCLUDE "src/common/string_utils.asm"
