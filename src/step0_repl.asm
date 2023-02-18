@@ -22,4 +22,4 @@ ORG &2000         ; code origin (like P%=&2000)
 .mytext EQUS "Hello world!", 13, 0
 .end
 
-SAVE "mal6502", start, end
+SAVE "mal6502", start, end 
