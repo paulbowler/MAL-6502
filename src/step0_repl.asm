@@ -2,8 +2,6 @@ osword = &FFF1
 oswrch = &FFEE
 osbyte = &FFF4
 
-str_addr = &70
-
 ORG &2000
 
 .start
