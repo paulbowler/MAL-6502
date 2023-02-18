@@ -8,7 +8,7 @@ ORG &2000
 
 .start
     LDA #0      ; Clear buffer from any previous run
-    STA buffer
+    STA string_buffer
     LDX #0      ; Initialise counter
 .prompt
     JSR print_str
@@ -38,7 +38,7 @@ ORG &2000
 .print
     CPY #0
     BEQ done
-    LDA buffer,X
+    LDA string_buffer,X
     JSR oswrch
     INX
     DEY
