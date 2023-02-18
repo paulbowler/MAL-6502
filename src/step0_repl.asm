@@ -7,7 +7,7 @@ str_addr = &70
 ORG &2000
 
 .start
-    LDA #0      ; Clear buffer from any previous run
+    LDA #0      ; Clear input buffer from any previous run
     STA string_buffer
     LDX #0      ; Initialise counter
 .prompt
