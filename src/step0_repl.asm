@@ -5,7 +5,9 @@ osbyte = &FFF4
 ORG &2000
 
 .start
-    LDX #0
+    LDA #0      ; Clear buffer from any previous run
+    STA buffer
+    LDX #0      ; Initialise counter
 .prompt
     LDA prompt_text, X
     CMP #0
@@ -16,7 +18,6 @@ ORG &2000
 .loop
     JSR read
     BCS exit    ; Exit if escape pressed
-
     CPY #0      ; If no input do nothing
     BEQ loop
 
