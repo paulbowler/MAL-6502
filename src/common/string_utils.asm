@@ -34,12 +34,6 @@
 	PLA  			; restore A
 	RTS
 
-
-
-
-
-
-
 .read_str
     LDA #0
     LDX #os_read_line MOD 256

@@ -27,8 +27,9 @@ ORG &2000
     JSR print
     JMP loop
 .read
-    LDA #ASC("]")
-    JSR oswrch
+    JSR print_str
+    EQUS "user>"
+    EQUB 0
     JSR read_str
     RTS
 .eval
@@ -58,7 +59,5 @@ ORG &2000
     INCLUDE "src/common/string_utils.asm"
 
 .end
-
-
 
 SAVE "mal6502", start, end 
