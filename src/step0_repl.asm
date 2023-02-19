@@ -16,14 +16,14 @@ ORG &2000
     EQUB 10
     EQUB 13
     EQUB 0
-.loop
+.rep
     JSR read
     BCS exit    ; Exit if escape pressed
     CPY #0      ; If no input do nothing
-    BEQ loop
+    BEQ rep
     JSR eval
     JSR print
-    JMP loop
+    JMP rep
 .read
     JSR print_str
     EQUS "user>"
