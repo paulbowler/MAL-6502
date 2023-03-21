@@ -10,7 +10,7 @@ ORG &2000
     LDX #0      ; Initialise counter
 .prompt
     JSR print_str
-    EQUS "MAL v1.1"
+    EQUS "MAL v0.1"
     EQUB 10
     EQUB 13
     EQUB 10
@@ -32,6 +32,8 @@ ORG &2000
     RTS
 .eval
     LDX #0
+    JSR lexer
+    JSR parse
     RTS
 .print
     CPY #0
@@ -45,6 +47,10 @@ ORG &2000
 .done
     LDA #10:JSR oswrch
     LDA #13:JSR oswrch
+    RTS
+.lexer
+    RTS
+.parse
     RTS
 .exit
     LDA #126            ; Acknowledge escape key pressed (*FX 126)
